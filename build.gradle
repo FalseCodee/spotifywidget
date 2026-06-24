@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'me.falsecode'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'se.michaelthelin.spotify:spotify-web-api-java:9.4.0'
+}
+
+application {
+    mainClass = 'me.falsecode.spotifywidget.Main'
+}
