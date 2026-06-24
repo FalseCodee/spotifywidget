@@ -23,11 +23,7 @@ public class AuthorizationManager {
     private static long accessTokenExpireDate = 0;
 
     private static SpotifyApi spotifyApi;
-    private static final AuthorizationCodeUriRequest authorizationCodeUriRequest = spotifyApi.authorizationCodeUri()
-            .state("x4xkmn9pu3j6ukrs8n")
-            .scope("user-read-playback-state")
-            .show_dialog(true)
-            .build();
+    private static AuthorizationCodeUriRequest authorizationCodeUriRequest;
 
     private static CompletableFuture<URI> getAuthorizationCodeUriAsync() {
        return authorizationCodeUriRequest.executeAsync();
@@ -68,6 +64,12 @@ public class AuthorizationManager {
                 .setClientId(clientId)
                 .setClientSecret(clientSecret)
                 .setRedirectUri(redirectUri)
+                .build();
+
+        authorizationCodeUriRequest = spotifyApi.authorizationCodeUri()
+                .state("x4xkmn9pu3j6ukrs8n")
+                .scope("user-read-playback-state")
+                .show_dialog(true)
                 .build();
     }
 
